@@ -1,5 +1,6 @@
-CONFIG_LOCATION = joinpath(pwd(), "config.json")
+module MessageAnalyser
 
+CONFIG_LOCATION = joinpath(pwd(), "config.json")
 function julia_main()::Cint
   include("gui.jl")
   wait(Condition())
@@ -7,4 +8,8 @@ function julia_main()::Cint
   return 0
 end
 
-julia_main()
+if abspath(PROGRAM_FILE) == @__FILE__
+  julia_main()
+end
+
+end
