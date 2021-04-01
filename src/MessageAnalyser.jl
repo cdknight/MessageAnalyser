@@ -1,3 +1,4 @@
+
 module MessageAnalyser
 
 CONFIG_LOCATION = joinpath(pwd(), "config.json")

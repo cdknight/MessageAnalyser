@@ -1,9 +1,11 @@
 
+
 module Analysis
     using Plots, Printf, Pipe, Query, DataFrames, Dates, JSON
+    
+    include("constants.jl")
     include("imessage.jl")
     include("discord.jl")
-    include("html.jl")
 
     Plots.theme(:dark)
     pyplot()
@@ -13,7 +15,8 @@ module Analysis
         # From config.json (yes, it's more inefficient, but not by a lot...
 
         println("Loading chat histories...")
-        return vcat([getfield(Main, Symbol(source["provider"])).toStandardDF(source["filename"], source["identifier"]) for source in sources]...) |>
+
+        return vcat([getfield(Analysis, Symbol(source["provider"])).toStandardDF(source["filename"], source["identifier"]) for source in sources]...) |>
             @orderby(_.Timestamp) |> DataFrame
 
     end
