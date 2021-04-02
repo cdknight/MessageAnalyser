@@ -6,6 +6,7 @@ module Analysis
     include("constants.jl")
     include("imessage.jl")
     include("discord.jl")
+    include("telegram.jl")
 
     Plots.theme(:dark)
     pyplot()
@@ -16,8 +17,12 @@ module Analysis
 
         println("Loading chat histories...")
 
-        return vcat([getfield(Analysis, Symbol(source["provider"])).toStandardDF(source["filename"], source["identifier"]) for source in sources]...) |>
+        try
+            return vcat([getfield(Analysis, Symbol(source["provider"])).toStandardDF(source["filename"], source["identifier"]) for source in sources]...) |>
             @orderby(_.Timestamp) |> DataFrame
+        catch e
+            println(e)
+        end
 
     end
 

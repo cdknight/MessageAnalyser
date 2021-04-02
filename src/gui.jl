@@ -9,7 +9,7 @@ function addSourceChooseBox(widget::GtkBox, filename = "", provider_string = "",
     remove = GtkButton("Remove")
 
     provider = GtkComboBoxText()
-    providerList = [ "Discord", "iMessage" ]
+    providerList = [ "Discord", "iMessage", "Telegram" ]
     for item in providerList
         push!(provider, item)
     end
