@@ -1,7 +1,7 @@
 
 
 module Analysis
-    using Plots, Printf, Pipe, Query, DataFrames, Dates, JSON
+    using Plots, Printf, Pipe, Query, DataFrames, Dates, JSON, DataStructures
     
     include("constants.jl")
     include("imessage.jl")
@@ -11,7 +11,6 @@ module Analysis
 
     Plots.theme(:dark)
     pyplot()
-    # pyplot()
 
     function loadChatHistories(sources = JSON.parsefile(CONFIG_LOCATION))
         # From config.json (yes, it's more inefficient, but not by a lot...
@@ -24,6 +23,27 @@ module Analysis
         catch e
             println(e)
         end
+
+    end
+
+    function getWordList(history::DataFrame, ignoreCase::Bool = true)
+
+        words = []
+        for line in eachrow(history)
+            # The flag is included since sometimes lowercase and uppercase words can have
+            # very different meanings in texting, at least in my experience
+            words = vcat(words, split(line.Message, " ") |>
+                @map(strip(_)) |>
+                @map(strip(_, [','])) |>
+                @map(ignoreCase ? lowercase(_) : _) |>
+                collect)
+        end
+        words_map = counter(words)
+
+        return DataFrame(
+            Word = [i[1] for i in words_map],
+            Occurrences = [i[2] for i in words_map]
+        ) 
 
     end
 
