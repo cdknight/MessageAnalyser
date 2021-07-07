@@ -7,6 +7,7 @@ module Analysis
     include("imessage.jl")
     include("discord.jl")
     include("telegram.jl")
+    include("hangouts.jl")
 
     Plots.theme(:dark)
     pyplot()
