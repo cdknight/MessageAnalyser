@@ -37,6 +37,10 @@ Make sure you export the entire chat history, but you can change it to
 whatever you want and MessageAnalyser will only analyse whatever you
 supply it with.
 
+### Hangouts
+
+Get the Hangons chat exporter [Hangons chat exporter](https://github.com/David-Byrne/Hangons/) and download the Hangouts export from Google Takeout. Import the `Hangouts.json` file into Hangons, and then select the "simplified JSON" format as the output format. Download the `hangons.json` file that it provides, and then select that in the MessageAnalyser GUI. The identifier is the name of the conversation. You can see a list of conversations contained in your `Hangouts.json` either by going to Google Hangouts and looking at the names of your chats, or you can also select a different output format in Hangons and look at the titles before the file extension (eg. if you select the CSV output format and you "Bob Smith.csv," then your identifier would be "Bob Smith").
+
 ## Usage
 
 1.  Get into the Julia REPL and install all the required packages. You
