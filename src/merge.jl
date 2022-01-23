@@ -8,6 +8,7 @@ module Analysis
     include("discord.jl")
     include("telegram.jl")
     include("hangouts.jl")
+    include("sms.jl")
 
     Plots.theme(:dark)
     pyplot()

@@ -1,6 +1,7 @@
 import Pkg; Pkg.activate(".")
 using Gtk, JSON, Plots, Pipe
 include("merge.jl")
+include("html.jl")
 
 function addSourceChooseBox(widget::GtkBox, filename = "", provider_string = "", identifier_string = "")
     hbox = GtkBox(:h)
@@ -9,7 +10,7 @@ function addSourceChooseBox(widget::GtkBox, filename = "", provider_string = "",
     remove = GtkButton("Remove")
 
     provider = GtkComboBoxText()
-    providerList = [ "Discord", "iMessage", "Telegram", "Hangouts" ]
+    providerList = [ "Discord", "iMessage", "Telegram", "Hangouts", "SMS" ]
     for item in providerList
         push!(provider, item)
     end
@@ -114,6 +115,7 @@ signal_connect(exportBtn, "clicked") do btn
         info_dialog("Exported chat history to the chosen file.")
     catch e
         warn_dialog("Couldn't export chat history. Maybe try clicking 'Analyse' first?")
+        println(e)
     end
 end
 
