@@ -1,8 +1,10 @@
 # MessageAnalyser
 
-No, it isn\'t that easy to set up, but it\'s quite interesting to view
-the results (screenshots and more documentation coming soon). Also,
-it\'s really slow.
+If you want to "analyse" your DMs for whatever reason, eg. seeing how many times more you send compared to someone else, then this program is for you. MessageAnalyser's purpose is to aggregate messages from (possibly multiple) sources into one `DataFrame` that can be used for all sorts of analysis. 
+
+It isn't that easy to set up, but it's sort-of interesting to view. Also, be warned: it's really slow. 
+
+Also, do remember that "analysing" your messages, at least, in my opinion, bears no "scientific" meaning. It's more for "wow, this graph/number looks interesting" than actually making friendship decisions. That being said, this is licensed under a free software license, so I can't stop you from using this "scientifically," but I don't recommend it.
 
 Right now, MessageAnalyser can analyse data from
 
@@ -12,7 +14,7 @@ Right now, MessageAnalyser can analyse data from
 -   Google Hangouts
 -   SMS (only Android, although iPhone SMS might work through iMessage on Mac)
 
-Hangouts support and perhaps Matrix support will be added in the future.
+Matrix support will probably be added in the future.
 
 I\'m lazy, so I didn\'t actually write any chat exporters. You have to
 do this manually with separate tools.
